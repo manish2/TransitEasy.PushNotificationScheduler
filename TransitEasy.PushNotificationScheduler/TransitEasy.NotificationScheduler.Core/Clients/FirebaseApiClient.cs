@@ -13,8 +13,8 @@ namespace TransitEasy.NotificationScheduler.Core.Clients
                 Token = fcmRequest.RegistrationToken,
                 Notification = new Notification
                 {
-                    Title = "TESTING FROM SERVER",
-                    Body = "HELLO FROM SERVER"
+                    Title = fcmRequest.MessageTitle,
+                    Body = fcmRequest.MessageBody
                 }
             };
             var response = await FirebaseMessaging.DefaultInstance.SendAsync(message);

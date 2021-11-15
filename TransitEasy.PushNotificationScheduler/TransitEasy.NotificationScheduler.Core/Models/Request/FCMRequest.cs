@@ -10,5 +10,6 @@ namespace TransitEasy.NotificationScheduler.Core.Models.Request
     {
         public string RegistrationToken { get; set; }
         public string MessageBody { get; set; }
+        public string MessageTitle { get; set; }
     }
 }

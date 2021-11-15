@@ -19,7 +19,7 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
         public async Task<SendNotificationResponse> HandleRequest(SendNotificationRequest request)
         {
             var apiResponse = await _transitEasyApiClient.GetNextBusSchedules(request.StopNo, request.NumberofNextBuses);
-            var targetSchedule = apiResponse.NextBusStopInfo.Where(stopInfo => stopInfo.RouteDescription.Contains(request.RouteNo)).FirstOrDefault();
+            var targetSchedule = apiResponse.NextBusStopInfo.Where(stopInfo => stopInfo.RouteDescription == request.RouteNo).FirstOrDefault();
             if (targetSchedule != null)
             {
                 var schedule = targetSchedule
@@ -31,28 +31,28 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
                 {
                     if(schedule.IsTripCancelled)
                     {
-                        var message = $"Oh no! Looks like your trip was cancelled for stop {request.StopNo}";
-                        await _firebaseApiClient.SendNotificationToFCM(new FCMRequest { MessageBody = message, RegistrationToken = request.FirebaseDeviceToken });
+                        var message = $"Oh no! Looks like your trip was cancelled for stop {request.StopNo}, you can check the service alerts page for more info";
+                        await _firebaseApiClient.SendNotificationToFCM(new FCMRequest { MessageTitle = "Bus Alert!", MessageBody = message, RegistrationToken = request.FirebaseDeviceToken });
                     }
                     else
                     {
-                        var message = GetPushNotificationMessageFromStatus(schedule.ScheduleStatus);
-                        await _firebaseApiClient.SendNotificationToFCM(new FCMRequest { MessageBody = message, RegistrationToken = request.FirebaseDeviceToken });
+                        var message = GetPushNotificationMessageFromStatus(schedule.ScheduleStatus, targetSchedule.RouteDescription, request.StopNo);
+                        await _firebaseApiClient.SendNotificationToFCM(new FCMRequest { MessageTitle = "Bus Alert!", MessageBody = message, RegistrationToken = request.FirebaseDeviceToken });
                     }
                 }
             }
             return new SendNotificationResponse
             {
-
+                Message = "Notification was scheduled successfully"
             };
         }
 
-        private string GetPushNotificationMessageFromStatus(NextBusScheduleStatus status)
+        private string GetPushNotificationMessageFromStatus(NextBusScheduleStatus status, string routeDesc, string stopNumber)
         => status switch
         {
-            NextBusScheduleStatus.DELAYED => "DELAYED",
-            NextBusScheduleStatus.AHEAD => "EARLY",
-            NextBusScheduleStatus.ONTIME => "ON TIME",
+            NextBusScheduleStatus.DELAYED => $"{routeDesc} will be delayed from departing ${stopNumber}, please check local traffic",
+            NextBusScheduleStatus.AHEAD => $"{routeDesc} will be departing early from stop ${stopNumber}, leave earlier than usual",
+            NextBusScheduleStatus.ONTIME => $"{routeDesc} will be on time for stop ${stopNumber}",
             _ => "ON TIME",
         };
     }
