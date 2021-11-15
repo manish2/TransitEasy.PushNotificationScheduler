@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransitEasy.PushNotificationScheduler", "TransitEasy.PushNotificationScheduler\TransitEasy.PushNotificationScheduler.csproj", "{312F7B29-C710-4C1A-8C45-5048980EB14B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransitEasy.NotificationScheduler.Core", "TransitEasy.NotificationScheduler.Core\TransitEasy.NotificationScheduler.Core.csproj", "{996EC227-C279-4A15-B733-C0B8336FCCB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{312F7B29-C710-4C1A-8C45-5048980EB14B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{312F7B29-C710-4C1A-8C45-5048980EB14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{312F7B29-C710-4C1A-8C45-5048980EB14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{312F7B29-C710-4C1A-8C45-5048980EB14B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996EC227-C279-4A15-B733-C0B8336FCCB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996EC227-C279-4A15-B733-C0B8336FCCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996EC227-C279-4A15-B733-C0B8336FCCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996EC227-C279-4A15-B733-C0B8336FCCB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58C90CA5-F641-4074-81A4-3982B631A0F2}
+	EndGlobalSection
+EndGlobal
