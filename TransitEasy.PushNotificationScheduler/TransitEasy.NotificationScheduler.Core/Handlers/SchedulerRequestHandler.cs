@@ -41,13 +41,12 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
             var result = await _googleCloudTaskApiClient.CreateScheduledNotificationAsync(payload, triggerTimeUtc);
 
             if (!string.IsNullOrEmpty(result))
-            {
                 return new CreateNotificationResponse
                 {
                     StatusCode = 201,
                     Message = "SUCCESS!"
                 };
-            }
+
             return new CreateNotificationResponse
             {
                 StatusCode = 500,

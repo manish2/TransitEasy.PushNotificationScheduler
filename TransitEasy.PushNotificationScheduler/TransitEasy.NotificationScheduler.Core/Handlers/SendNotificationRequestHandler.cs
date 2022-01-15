@@ -50,9 +50,9 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
         private string GetPushNotificationMessageFromStatus(NextBusScheduleStatus status, string routeDesc, string stopNumber)
         => status switch
         {
-            NextBusScheduleStatus.DELAYED => $"{routeDesc} will be delayed from departing ${stopNumber}, please check local traffic",
-            NextBusScheduleStatus.AHEAD => $"{routeDesc} will be departing early from stop ${stopNumber}, leave earlier than usual",
-            NextBusScheduleStatus.ONTIME => $"{routeDesc} will be on time for stop ${stopNumber}",
+            NextBusScheduleStatus.DELAYED => $"{routeDesc} will be delayed from departing {stopNumber}, please check local traffic",
+            NextBusScheduleStatus.AHEAD => $"{routeDesc} will be departing early from stop {stopNumber}, leave earlier than usual",
+            NextBusScheduleStatus.ONTIME => $"{routeDesc} will be on time for stop {stopNumber}",
             _ => "ON TIME",
         };
     }
