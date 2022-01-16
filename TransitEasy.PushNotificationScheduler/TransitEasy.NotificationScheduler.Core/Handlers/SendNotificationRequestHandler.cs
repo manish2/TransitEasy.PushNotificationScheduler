@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using TransitEasy.NotificationScheduler.Core.Clients;
 using TransitEasy.NotificationScheduler.Core.Models.Request;
@@ -24,7 +25,7 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
             {
                 var schedule = targetSchedule
                     .Schedules
-                    .Where(schedule => schedule.Destination.Equals(request.Destination, System.StringComparison.InvariantCultureIgnoreCase) && schedule.ExpectedLeaveTime == request.ExpectedLeaveTime)
+                    .Where(schedule => schedule.Destination.Equals(request.Destination, StringComparison.InvariantCultureIgnoreCase) && IsDateTimeInBounds(schedule.ExpectedLeaveTime, request.ExpectedLeaveTime))
                     .FirstOrDefault();
 
                 if(schedule != null)
@@ -36,9 +37,14 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
                     }
                     else
                     {
-                        var message = GetPushNotificationMessageFromStatus(schedule.ScheduleStatus, targetSchedule.RouteDescription, request.StopNo);
+                        var message = GetPushNotificationMessageFromStatus(schedule.ScheduleStatus, targetSchedule.RouteDescription, request.StopNo, schedule.CountdownInMin);
                         await _firebaseApiClient.SendNotificationToFCM(new FCMRequest { MessageTitle = "Bus Alert!", MessageBody = message, RegistrationToken = request.FirebaseDeviceToken });
                     }
+                }
+                else
+                {
+                    var message = $"Oh no! Could not find your schedule. Please check if it may have been severely delayed or cancelled.";
+                    await _firebaseApiClient.SendNotificationToFCM(new FCMRequest { MessageTitle = "Bus Alert!", MessageBody = message, RegistrationToken = request.FirebaseDeviceToken });
                 }
             }
             return new SendNotificationResponse
@@ -47,12 +53,23 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
             };
         }
 
-        private string GetPushNotificationMessageFromStatus(NextBusScheduleStatus status, string routeDesc, string stopNumber)
+        private bool IsDateTimeInBounds(DateTime first, DateTime second)
+        {
+            if (first == second)
+                return true;
+            else
+            {
+                var difference = first > second ? (first - second).TotalMinutes : (second - first).TotalMinutes;
+                return difference <= 5;
+            }
+        }   
+
+        private string GetPushNotificationMessageFromStatus(NextBusScheduleStatus status, string routeDesc, string stopNumber, int countDownInMin)
         => status switch
         {
-            NextBusScheduleStatus.DELAYED => $"{routeDesc} will be delayed from departing {stopNumber}, please check local traffic",
-            NextBusScheduleStatus.AHEAD => $"{routeDesc} will be departing early from stop {stopNumber}, leave earlier than usual",
-            NextBusScheduleStatus.ONTIME => $"{routeDesc} will be on time for stop {stopNumber}",
+            NextBusScheduleStatus.DELAYED => $"{routeDesc} will be delayed from departing {stopNumber}, please check local traffic. Arriving {Math.Abs(countDownInMin)} later",
+            NextBusScheduleStatus.AHEAD => $"{routeDesc} will be departing early from stop {stopNumber}, leave earlier than usual. Arriving {Math.Abs(countDownInMin)} earlier",
+            NextBusScheduleStatus.ONTIME => $"{routeDesc} will be on time for stop {stopNumber}. Arriving in {Math.Abs(countDownInMin)} min",
             _ => "ON TIME",
         };
     }

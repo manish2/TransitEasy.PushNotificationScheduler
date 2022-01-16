@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransitEasy.PushNotificationScheduler", "TransitEasy.PushNotificationScheduler\TransitEasy.PushNotificationScheduler.csproj", "{312F7B29-C710-4C1A-8C45-5048980EB14B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransitEasy.PushNotificationScheduler", "TransitEasy.PushNotificationScheduler\TransitEasy.PushNotificationScheduler.csproj", "{312F7B29-C710-4C1A-8C45-5048980EB14B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransitEasy.NotificationScheduler.Core", "TransitEasy.NotificationScheduler.Core\TransitEasy.NotificationScheduler.Core.csproj", "{996EC227-C279-4A15-B733-C0B8336FCCB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransitEasy.NotificationScheduler.Core", "TransitEasy.NotificationScheduler.Core\TransitEasy.NotificationScheduler.Core.csproj", "{996EC227-C279-4A15-B733-C0B8336FCCB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransitEasy.Scheduler.Core.Tests", "TransitEasy.Scheduler.Core.Tests\TransitEasy.Scheduler.Core.Tests.csproj", "{AF53AF49-7737-4EFC-8C8A-D107C332B78D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransitEasy.Scheduler.Integration.Test", "TransitEasy.Scheduler.Integration.Test\TransitEasy.Scheduler.Integration.Test.csproj", "{249649C2-520C-4B8A-9167-D573D767B796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{996EC227-C279-4A15-B733-C0B8336FCCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{996EC227-C279-4A15-B733-C0B8336FCCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{996EC227-C279-4A15-B733-C0B8336FCCB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF53AF49-7737-4EFC-8C8A-D107C332B78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF53AF49-7737-4EFC-8C8A-D107C332B78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF53AF49-7737-4EFC-8C8A-D107C332B78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF53AF49-7737-4EFC-8C8A-D107C332B78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249649C2-520C-4B8A-9167-D573D767B796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249649C2-520C-4B8A-9167-D573D767B796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249649C2-520C-4B8A-9167-D573D767B796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249649C2-520C-4B8A-9167-D573D767B796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

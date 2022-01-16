@@ -27,7 +27,7 @@ namespace TransitEasy.PushNotificationScheduler.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("/sendnotification")]
-        [ProducesResponseType(201)]
+        [ProducesResponseType(200)]
         [ProducesResponseType(500)]
         public async Task<ActionResult> SendNotification([FromBody] SendNotificationRequest request)
         {

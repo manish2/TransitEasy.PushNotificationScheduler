@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TransitEasy.NotificationScheduler.Core.Handlers.SchedulerRequestHandler">
+    <Position X="1.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAABQAAAAAAAAIAAAAAAAAAAACAAAACA=</HashCode>
+      <FileName>Handlers\SchedulerRequestHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_googleCloudTaskApiClient" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TransitEasy.NotificationScheduler.Core.Handlers.SendNotificationRequestHandler">
+    <Position X="6.25" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAEAAAAAAAABAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\SendNotificationRequestHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_firebaseApiClient" />
+      <Field Name="_transitEasyApiClient" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TransitEasy.NotificationScheduler.Core.Clients.GoogleCloudTaskApiClient">
+    <Position X="3.25" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Clients\GoogleCloudTaskApiClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TransitEasy.NotificationScheduler.Core.Clients.TransitEasyApiClient">
+    <Position X="9" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Clients\TransitEasyApiClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TransitEasy.NotificationScheduler.Core.Clients.FirebaseApiClient">
+    <Position X="13" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Clients\FirebaseApiClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="TransitEasy.NotificationScheduler.Core.Handlers.IRequestHandler&lt;TRequest, TResult&gt;">
+    <Position X="3.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\IRequestHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TransitEasy.NotificationScheduler.Core.Clients.IGoogleCloudTaskApiClient">
+    <Position X="0.5" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Clients\IGoogleCloudTaskApiClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TransitEasy.NotificationScheduler.Core.Clients.IFirebaseApiClient">
+    <Position X="11" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Clients\IFirebaseApiClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TransitEasy.NotificationScheduler.Core.Clients.ITransitEasyApiClient">
+    <Position X="7" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Clients\ITransitEasyApiClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -12,9 +12,9 @@ namespace TransitEasy.NotificationScheduler.Core.Handlers
     {
         private readonly IGoogleCloudTaskApiClient _googleCloudTaskApiClient;
         //This is to take into the account the amount of time it takes to make an API call to translink and check the traffic updates
-        private readonly TimeSpan NotificationProcessingTimeOffSet = TimeSpan.FromSeconds(60);
+        private readonly TimeSpan NotificationProcessingTimeOffSet = TimeSpan.FromSeconds(30);
         //This is to take into the account the amount of time between sending the Notification to when it reaches the device
-        private readonly TimeSpan NotificationSendTimeOffSet = TimeSpan.FromSeconds(30);
+        private readonly TimeSpan NotificationSendTimeOffSet = TimeSpan.FromSeconds(5);
         private readonly ILogger<SchedulerRequestHandler> _logger;
         
         public SchedulerRequestHandler(IGoogleCloudTaskApiClient googleCloudTaskApiClient, ILogger<SchedulerRequestHandler> logger)
